@@ -1,0 +1,71 @@
+html {
+	background: #7a1616;
+	font-family: 'Quantico', sans-serif;
+}
+
+.song {
+	font-family: 'Quantico', sans-serif;
+}
+
+.pause {
+	background: url(../images/pause.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 48px;
+	height: 48px;
+}
+
+.play {
+	background: url(../images/play-button.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 48px;
+	height: 48px;
+}
+
+#next {
+	background: url(../images/next.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 48px;
+	height: 48px;
+}
+.muteoff {
+	background: url(../images/speaker.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 48px;
+	height: 48px;
+}
+
+.muteon {
+	background: url(../images/mute.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 48px;
+	height: 48px;
+}
+
+.song {
+	background: red;
+	width: 5%;
+	height:0;
+	padding-bottom: 3%;
+    border-radius: 50%;
+	border:5px solid #FCFBE3;
+    overflow:hidden;
+}
+
+h2 {
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Audiowide', cursive;
+}
+
+#seekslider {
+	width: 100px;
+}
+
+#volumeslider {
+	width: 70px;
+}
