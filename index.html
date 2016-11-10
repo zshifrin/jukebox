@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Quantico" rel="stylesheet">
+    <title>Jukebox Project</title>
+</head>
+
+<body>
+    <div id="jukebox">
+        <button id="playpause" class="pause"></button>
+        <button id="mute" class="muteoff"></button>
+        <input id="volumeslider" type="range" min=".0" max="1.0" value="1.0" step="0.1">
+        <button id="next"></button>
+        <input id="seek-bar" type="range" value="0">
+    </div>
+    <h2 id="CurrentSong"></h2>
+    <div id="trackbox"></div>
+    <button class="song" data-src="music/Highwayman.mp3">Highwayman</button>
+    <button class="song" data-src="music/dogs.mp3">Dogs</button>
+    <button class="song" data-src="music/goin_out_west.mp3">Goin' Out West</button>
+    <button class="song" data-src="music/After_Midnight.mp3">After Midnight</button>
+    <button class="song" data-src="music/Lochloosa.mp3">Lochloosa</button>
+    <button class="song" data-src="music/pusherman.m4a">Pusherman</button>
+    <button class="song" data-src="music/sabotage.mp3">Sabotage</button>
+    <button class="song" data-src="music/Travelin_Light.mp3">Travelin' Light</button>
+    <button class="song" data-src="music/use_me.mp3">Use Me</button>
+    <!-- Pull JS code -->
+    <script type="text/javascript" src="js/jukebox.js"></script>
+    <script>
+    var songs = ["music/Highwayman.mp3", "music/dogs.mp3", "music/goin_out_west.mp3", "music/After_Midnight.mp3", "music/Lochloosa.mp3", "music/pusherman.m4a", "music/sabotage.mp3", "music/Travelin_Light.mp3", "music/use_me.mp3"];
+    var jukebox = new Jukebox(songs);
+    jukebox.play();
+
+    var playbtn = document.getElementById("playpause");
+    playbtn.addEventListener("click", function(event) {
+        jukebox.playPause();
+
+        // event.target
+
+        if (jukebox.playing()) {
+            // set button class to playing
+            document.getElementById("playpause").className = "pause";
+        } else {
+            // set button class to paused
+            document.getElementById("playpause").className = "play";
+
+        }
+    });
+
+    //SONG TITLE
+    jukebox.currentSong.addEventListener('play', function() {
+    	addTrackName();
+    });
+
+    	// this.currentSong.audio.addEventListener('play', function(event) {
+     //        let title = decodeURI(event.target.src.split('/').reverse()[0]);
+     //        document.querySelector('h1').innerHTML = title.replace('.mp3', '');
+     //    });
+
+    // MUTE/UNMUTE MUSIC
+    var mutebtn = document.getElementById("mute");
+    mutebtn.addEventListener("click", mute);
+
+
+    function mute() {
+    	jukebox.mute();
+        if (jukebox.unmuted()) {
+            // set class
+            document.getElementById("mute").className = "muteoff";
+        } else {
+            //set class
+            document.getElementById("mute").className = "muteon";
+        }
+    }
+
+    // Play Individual Songs
+    // array
+    var buttons = document.getElementsByClassName('song');
+    //for loop
+    for (var i = 0; i < buttons.length; i++) {
+    	buttons[i].addEventListener("click", songbutton);
+    }
+
+    function songbutton() {
+    	jukebox.songButton();
+    }
+
+	function addTrackName() {
+	    var song = jukebox.currentSong.src;
+	    var parts = song.split("/");
+		var cs = document.getElementById("CurrentSong");
+		var title = parts.reverse()[0];
+		console.log(title);
+	    cs.innerHTML = "Track: " + title.replace(/\.mp3|\.m4a/, '');
+	}
+
+	//SEEKBAR
+	// Event listener for the seek bar
+	seekBar = document.getElementById("seek-bar");
+	seekBar.addEventListener("change", function() {
+  		// Calculate the new time
+  		var time = jukebox.currentSong.duration * (seekBar.value / 100);
+
+  		// Update the audio time
+  		jukebox.currentSong.currentTime = time;
+	});
+
+	// Update the seek bar as the song plays
+	jukebox.currentSong.addEventListener("timeupdate", function() {
+	  // Calculate the slider value
+	  var value = (100 / jukebox.currentSong.duration) * jukebox.currentSong.currentTime;
+
+	  // Update the slider value
+	  seekBar.value = value;
+	});
+
+	//Pause video when slider is moving
+	seekBar.addEventListener("mousedown", function() {
+		jukebox.currentSong.pause();
+	});
+
+	//Play when slider is dropped
+	seekBar.addEventListener("mouseup", function() {
+		jukebox.currentSong.play();
+	});
+
+	//NEXT button
+    var nextbtn = document.getElementById("next");
+    nextbtn.addEventListener("click", function() {
+        jukebox.playNextSong();
+    });
+
+    //VOLUME control
+    volumeSlider = document.getElementById("volumeslider");
+    volumeSlider.addEventListener("mousemove", function(event) {
+        jukebox.setVolume(volumeSlider.value);
+    });
+
+    </script>
+</body>
+
+</html>

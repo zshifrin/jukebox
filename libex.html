@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery Exercise</title>
+</head>
+<body>
+	<style type="text/css">
+		#clicker {
+			display: none;
+		}
+
+		.clicked {
+			background: #5C246E;
+			color: #fff;
+		}
+	</style>
+	<div id="clicker">
+		<h1>Here's a Title</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis vel illo blanditiis, voluptatum ea, aut maxime quae. Voluptate quibusdam cumque maxime, sunt debitis aut, in numquam obcaecati iure rerum, eum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis deserunt eos rerum, saepe ipsam assumenda aspernatur molestiae eius soluta tenetur obcaecati reiciendis nihil quis voluptatem odio quibusdam consectetur nobis hic!
+		</p>
+		
+		<p id="goAway">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis vel illo blanditiis, voluptatum ea, aut maxime quae. Voluptate quibusdam cumque maxime, sunt debitis aut, in numquam obcaecati iure rerum, eum! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis deserunt eos rerum, saepe ipsam assumenda aspernatur molestiae eius soluta tenetur obcaecati reiciendis nihil quis voluptatem odio quibusdam consectetur nobis hic!
+		</p>
+	</div>
+
+	<script
+		src="https://code.jquery.com/jquery-3.1.1.js"
+		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  $( "#clicker" ).fadeIn(5000);
+		});
+
+		$("#clicker").click(function() {
+			$(this).toggleClass('clicked', 5000);
+		});
+	</script>
+</body>
+</html>

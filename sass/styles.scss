@@ -1,0 +1,59 @@
+@import "bourbon/bourbon";
+
+$font-main: 'Quantico', sans-serif;
+
+html {
+	background: #7a1616
+	font-family: $font-main;
+}
+
+.song {
+	font-family: $font-main;
+}
+
+#jukebox {
+	.pause {
+		background: url(../images/pause.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 48px;
+		height: 48px;
+	}
+	
+	.play {
+		background: url(../images/play-button.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 48px;
+		height: 48px;
+	}
+	
+	#next {
+		background: url(../images/next.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 48px;
+		height: 48px;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
