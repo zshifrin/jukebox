@@ -2,30 +2,63 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Quantico" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jukebox Project</title>
 </head>
 
 <body>
-    <div id="jukebox">
-        <button id="playpause" class="pause"></button>
-        <button id="mute" class="muteoff"></button>
-        <input id="volumeslider" type="range" min=".0" max="1.0" value="1.0" step="0.1">
-        <button id="next"></button>
-        <input id="seek-bar" type="range" value="0">
+    <div id="jukeback">
+        <h2 id="CurrentSong"></h2>
+        <div id="trackbox"></div>
+        <section id="songSelection">
+            <div class="labels">
+                <button class="song" data-src="music/Highwayman.mp3"></button>
+                <h3>Highwayman</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/dogs.mp3"></button>
+                <h3>Dogs</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/goin_out_west.mp3"></button>
+                <h3>Goin' Out West</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/After_Midnight.mp3"></button>
+                <h3>After Midnight</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/Lochloosa.mp3"></button>
+                <h3>Lochloosa</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/pusherman.m4a"></button>
+                <h3>Pusherman</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/sabotage.mp3"></button>
+                <h3>Sabotage</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/Travelin_Light.mp3"></button>
+                <h3>Travelin' Light</h3>
+            </div>
+            <div class="labels">
+                <button class="song" data-src="music/use_me.mp3"></button>
+                <h3>Use Me</h3>
+            </div>
+        </section>
+        <div id="jukebox">
+            <button id="playpause" class="pause"></button>
+            <button id="next"></button>
+            <input id="seek-bar" type="range" value="0"><br id="break">
+            <button id="mute" class="muteoff"></button>
+            <input id="volumeslider" type="range" min=".0" max="1.0" value="1.0" step="0.1">
+        </div>
     </div>
-    <h2 id="CurrentSong"></h2>
-    <div id="trackbox"></div>
-    <button class="song" data-src="music/Highwayman.mp3">Highwayman</button>
-    <button class="song" data-src="music/dogs.mp3">Dogs</button>
-    <button class="song" data-src="music/goin_out_west.mp3">Goin' Out West</button>
-    <button class="song" data-src="music/After_Midnight.mp3">After Midnight</button>
-    <button class="song" data-src="music/Lochloosa.mp3">Lochloosa</button>
-    <button class="song" data-src="music/pusherman.m4a">Pusherman</button>
-    <button class="song" data-src="music/sabotage.mp3">Sabotage</button>
-    <button class="song" data-src="music/Travelin_Light.mp3">Travelin' Light</button>
-    <button class="song" data-src="music/use_me.mp3">Use Me</button>
     <!-- Pull JS code -->
     <script type="text/javascript" src="js/jukebox.js"></script>
     <script>
@@ -51,13 +84,13 @@
 
     //SONG TITLE
     jukebox.currentSong.addEventListener('play', function() {
-    	addTrackName();
+        addTrackName();
     });
 
-    	// this.currentSong.audio.addEventListener('play', function(event) {
-     //        let title = decodeURI(event.target.src.split('/').reverse()[0]);
-     //        document.querySelector('h1').innerHTML = title.replace('.mp3', '');
-     //    });
+    // this.currentSong.audio.addEventListener('play', function(event) {
+    //        let title = decodeURI(event.target.src.split('/').reverse()[0]);
+    //        document.querySelector('h1').innerHTML = title.replace('.mp3', '');
+    //    });
 
     // MUTE/UNMUTE MUSIC
     var mutebtn = document.getElementById("mute");
@@ -65,7 +98,7 @@
 
 
     function mute() {
-    	jukebox.mute();
+        jukebox.mute();
         if (jukebox.unmuted()) {
             // set class
             document.getElementById("mute").className = "muteoff";
@@ -80,53 +113,53 @@
     var buttons = document.getElementsByClassName('song');
     //for loop
     for (var i = 0; i < buttons.length; i++) {
-    	buttons[i].addEventListener("click", songbutton);
+        buttons[i].addEventListener("click", songbutton);
     }
 
     function songbutton() {
-    	jukebox.songButton();
+        jukebox.songButton();
     }
 
-	function addTrackName() {
-	    var song = jukebox.currentSong.src;
-	    var parts = song.split("/");
-		var cs = document.getElementById("CurrentSong");
-		var title = parts.reverse()[0];
-		console.log(title);
-	    cs.innerHTML = "Track: " + title.replace(/\.mp3|\.m4a/, '');
-	}
+    function addTrackName() {
+        var song = jukebox.currentSong.src;
+        var parts = song.split("/");
+        var cs = document.getElementById("CurrentSong");
+        var title = parts.reverse()[0];
+        console.log(title);
+        cs.innerHTML = "Track: " + title.replace(/\.mp3|\.m4a/, '');
+    }
 
-	//SEEKBAR
-	// Event listener for the seek bar
-	seekBar = document.getElementById("seek-bar");
-	seekBar.addEventListener("change", function() {
-  		// Calculate the new time
-  		var time = jukebox.currentSong.duration * (seekBar.value / 100);
+    //SEEKBAR
+    // Event listener for the seek bar
+    seekBar = document.getElementById("seek-bar");
+    seekBar.addEventListener("change", function() {
+        // Calculate the new time
+        var time = jukebox.currentSong.duration * (seekBar.value / 100);
 
-  		// Update the audio time
-  		jukebox.currentSong.currentTime = time;
-	});
+        // Update the audio time
+        jukebox.currentSong.currentTime = time;
+    });
 
-	// Update the seek bar as the song plays
-	jukebox.currentSong.addEventListener("timeupdate", function() {
-	  // Calculate the slider value
-	  var value = (100 / jukebox.currentSong.duration) * jukebox.currentSong.currentTime;
+    // Update the seek bar as the song plays
+    jukebox.currentSong.addEventListener("timeupdate", function() {
+        // Calculate the slider value
+        var value = (100 / jukebox.currentSong.duration) * jukebox.currentSong.currentTime;
 
-	  // Update the slider value
-	  seekBar.value = value;
-	});
+        // Update the slider value
+        seekBar.value = value;
+    });
 
-	//Pause video when slider is moving
-	seekBar.addEventListener("mousedown", function() {
-		jukebox.currentSong.pause();
-	});
+    //Pause video when slider is moving
+    seekBar.addEventListener("mousedown", function() {
+        jukebox.currentSong.pause();
+    });
 
-	//Play when slider is dropped
-	seekBar.addEventListener("mouseup", function() {
-		jukebox.currentSong.play();
-	});
+    //Play when slider is dropped
+    seekBar.addEventListener("mouseup", function() {
+        jukebox.currentSong.play();
+    });
 
-	//NEXT button
+    //NEXT button
     var nextbtn = document.getElementById("next");
     nextbtn.addEventListener("click", function() {
         jukebox.playNextSong();
@@ -137,7 +170,6 @@
     volumeSlider.addEventListener("mousemove", function(event) {
         jukebox.setVolume(volumeSlider.value);
     });
-
     </script>
 </body>
 

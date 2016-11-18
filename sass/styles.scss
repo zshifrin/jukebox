@@ -2,40 +2,164 @@
 
 $font-main: 'Quantico', sans-serif;
 
+$font-titles: 'Audiowide', serif;
+
 html {
-	background: #7a1616
+	background: #996434;
 	font-family: $font-main;
 }
 
-.song {
-	font-family: $font-main;
+#jukeback {
+	background: url(../images/juke3.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 700px; 
 }
 
 #jukebox {
+	margin-left: 27%;
+	clear: both;
 	.pause {
 		background: url(../images/pause.png);
-		background-repeat: no-repeat;
-		background-position: center;
-		width: 48px;
-		height: 48px;
+		@extend .buttons;
 	}
 	
 	.play {
 		background: url(../images/play-button.png);
-		background-repeat: no-repeat;
-		background-position: center;
-		width: 48px;
-		height: 48px;
+		@extend .buttons;
 	}
 	
 	#next {
 		background: url(../images/next.png);
-		background-repeat: no-repeat;
-		background-position: center;
-		width: 48px;
-		height: 48px;
+		@extend .buttons;
 	}
+
+	.muteoff {
+		background: url(../images/speaker.png);
+		@extend .buttons;
+		margin-left: 5px;
+	}
+
+	.muteon {
+		background: url(../images/mute.png);
+		@extend .buttons;
+		margin-left: 5px;
+	}
+
+	#volumeslider {
+		width: 70px;
+	}
+}
+
+#CurrentSong {
+	color: #000000;
+	text-transform: uppercase;
+	font-family: $font-titles;
+	font-size: 20px;
+	text-align: center;
+	position: relative;
+  	top: 16%;
+  	transform: translateY(-50%);
 	
+}
+
+#songSelection {
+	width: 60%;
+	margin-left: 27%;
+	margin-top: 47%;
+	.labels {
+		float: left;
+		.song {
+			background: url(../images/button-off.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			font-family: $font-main;
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			margin-top: 5px;
+			float: left;
+		}
+
+		h3 {
+			background: white;
+			font-family: $font-main;
+			text-align: center;
+			width: 135px;
+			float: left;
+			margin: 10px 0 0 1px;
+
+		}
+	}	
+}
+
+.buttons {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+//media query 550width and up
+@media only screen and (min-width: 540px) {
+	#jukeback {
+		background-size: cover;
+	}
+
+	#songSelection {
+		width: 40%;
+		// margin: 0 auto;
+	}
+
+	#CurrentSong {
+		font-size: 40px;
+	}
+
+	.buttons {
+		width: 40px;
+		height: 40px;
+	}
+}
+@media only screen and (min-width: 650px) {
+	#songSelection {
+		width: 50%;
+		margin-left: 25%;
+	}
+	#jukebox {
+		margin-left: 33%;
+		position: relative;
+  		top: 10%;
+  		transform: translateY(-50%);
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	#jukebox {
+		margin-left: 25%;
+	}
+	#break {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 1080px) {
+	#songSelection {
+		margin-top: 21%;
+		margin-left: 30%;
+		width: 45%;
+	}
+	.buttons {
+		width: 60px;
+		height: 60px;
+	}
+	#jukebox {
+		margin-left: 33%;
+		position: relative;
+  		top: 10%;
+  		transform: translateY(-50%);
+	}
 }
 
 
