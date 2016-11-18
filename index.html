@@ -54,7 +54,8 @@
         <div id="jukebox">
             <button id="playpause" class="pause"></button>
             <button id="next"></button>
-            <input id="seek-bar" type="range" value="0"><br id="break">
+            <input id="seek-bar" type="range" value="0">
+            <br id="break">
             <button id="mute" class="muteoff"></button>
             <input id="volumeslider" type="range" min=".0" max="1.0" value="1.0" step="0.1">
         </div>
@@ -86,11 +87,6 @@
     jukebox.currentSong.addEventListener('play', function() {
         addTrackName();
     });
-
-    // this.currentSong.audio.addEventListener('play', function(event) {
-    //        let title = decodeURI(event.target.src.split('/').reverse()[0]);
-    //        document.querySelector('h1').innerHTML = title.replace('.mp3', '');
-    //    });
 
     // MUTE/UNMUTE MUSIC
     var mutebtn = document.getElementById("mute");

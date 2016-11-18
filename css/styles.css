@@ -6,11 +6,16 @@ html {
   background: url(../images/juke3.png);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   width: 100%;
   height: 700px; }
 
 #jukebox {
-  margin-left: 27%;
+  margin: 0 auto;
+  width: 200px;
+  position: relative;
+  top: 34%;
+  transform: translateY(-50%);
   clear: both; }
   #jukebox .pause {
     background: url(../images/pause.png); }
@@ -38,9 +43,12 @@ html {
   transform: translateY(-50%); }
 
 #songSelection {
-  width: 60%;
-  margin-left: 27%;
-  margin-top: 47%; }
+  width: 285px;
+  margin: 0 auto;
+  padding-left: 98px;
+  position: relative;
+  top: 30%;
+  transform: translateY(-50%); }
   #songSelection .labels {
     float: left; }
     #songSelection .labels .song {
@@ -68,49 +76,10 @@ html {
   width: 30px;
   height: 30px; }
 
-@media only screen and (min-width: 540px) {
-  #jukeback {
-    background-size: cover; }
-
-  #songSelection {
-    width: 40%; }
-
-  #CurrentSong {
-    font-size: 40px; }
-
-  .buttons, #jukebox .pause, #jukebox .play, #jukebox #next, #jukebox .muteoff, #jukebox .muteon {
-    width: 40px;
-    height: 40px; } }
-@media only screen and (min-width: 650px) {
-  #songSelection {
-    width: 50%;
-    margin-left: 25%; }
-
+@media only screen and (min-width: 430px) {
   #jukebox {
-    margin-left: 33%;
-    position: relative;
-    top: 10%;
-    transform: translateY(-50%); } }
-@media only screen and (min-width: 700px) {
-  #jukebox {
-    margin-left: 25%; }
-
-  #break {
-    display: none; } }
-@media only screen and (min-width: 1080px) {
-  #songSelection {
-    margin-top: 21%;
-    margin-left: 30%;
-    width: 45%; }
-
-  .buttons, #jukebox .pause, #jukebox .play, #jukebox #next, #jukebox .muteoff, #jukebox .muteon {
-    width: 60px;
-    height: 60px; }
-
-  #jukebox {
-    margin-left: 33%;
-    position: relative;
-    top: 10%;
-    transform: translateY(-50%); } }
+    top: 36%; }
+    #jukebox #mute {
+      margin-top: 3px; } }
 
 /*# sourceMappingURL=styles.css.map */

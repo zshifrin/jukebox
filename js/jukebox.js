@@ -3,8 +3,8 @@
 // load different songs. Can add playlist and shuffle functionalities.
 //Class - blueprint for creating an obj called Jukebox
 function Jukebox(songs) {
-	//this ={}; comes for free
-	//array of songs
+    //this ={}; comes for free
+    //array of songs
     this.songs = songs;
 
     //start at 0 index when you call new jukebox
@@ -58,11 +58,11 @@ function Jukebox(songs) {
     };
 
     this.songButton = function() {
-    	var songSrc = event.target.dataset.src;
-    	this.currentSong.src = songSrc;
-    	this.currentSong.play();
-    	this.currentSongIndex = this.songs.indexOf(songSrc);
-	};
+        var songSrc = event.target.dataset.src;
+        this.currentSong.src = songSrc;
+        this.currentSong.play();
+        this.currentSongIndex = this.songs.indexOf(songSrc);
+    };
 
 
     //function for restarting playlist
